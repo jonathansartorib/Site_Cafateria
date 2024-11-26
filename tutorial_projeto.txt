@@ -1,0 +1,96 @@
+
+Tutorial de Dependências e Comandos do Projeto
+
+Este é um tutorial para entender as dependências que foram instaladas e os comandos utilizados no bash para configurar o projeto. 
+Abaixo estão os passos para configurar e instalar todas as dependências necessárias.
+
+### 1. Inicializando o Projeto Node.js
+Antes de qualquer coisa, precisamos inicializar o projeto Node.js com o comando:
+
+```bash
+npm init -y
+```
+
+Este comando cria um arquivo `package.json` com configurações padrão para o projeto.
+
+### 2. Instalando as Dependências
+
+As dependências são as bibliotecas e pacotes necessários para o projeto funcionar corretamente. Para instalar as dependências, utilize o comando:
+
+```bash
+npm install express pg dotenv cors
+```
+
+Aqui está o que cada dependência faz:
+- **express**: Framework minimalista e flexível para construir aplicações web no Node.js.
+- **pg**: Cliente PostgreSQL para conectar o Node.js ao banco de dados PostgreSQL.
+- **dotenv**: Carrega variáveis de ambiente de um arquivo `.env` para o Node.js.
+- **cors**: Middleware para permitir requisições de outros domínios (necessário para permitir a comunicação entre o frontend e o backend durante o desenvolvimento).
+
+### 3. Instalando o Nodemon (para Desenvolvimento)
+Se você deseja que o servidor reinicie automaticamente durante o desenvolvimento, instale o **nodemon** globalmente com o comando:
+
+```bash
+npm install -g nodemon
+```
+
+Com isso, ao invés de usar `node server.js`, use `nodemon server.js` para rodar o servidor.
+
+### 4. Arquivo `.env`
+Crie um arquivo `.env` na raiz do seu projeto para armazenar as variáveis de ambiente, como o URL do banco de dados.
+
+Exemplo de arquivo `.env`:
+
+```env
+DATABASE_URL=seu_url_do_banco_de_dados
+PORT=3000
+```
+
+Certifique-se de adicionar o arquivo `.env` ao `.gitignore` para evitar que suas credenciais sejam publicadas no repositório.
+
+### 5. Comandos de Criação do Banco de Dados
+Se você ainda não tiver o banco de dados configurado, siga estes comandos para criar um banco de dados no PostgreSQL:
+
+```bash
+psql -U seu_usuario
+CREATE DATABASE nome_do_banco;
+\c nome_do_banco  # Para conectar ao banco de dados
+```
+### 6. Criação da Tabela no PostgreSQL
+Uma vez que o banco de dados esteja pronto, crie a tabela de usuários utilizando o seguinte comando SQL:
+
+```sql
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    dob DATE NOT NULL
+);
+```
+
+Este comando cria uma tabela `users` com os campos `id`, `name`, `email`, `password`, e `dob`.
+
+### 7. Executando o Servidor
+Para rodar o servidor, use o comando:
+
+```bash
+nodemon server.js
+```
+
+Isso irá iniciar o servidor na porta definida no `.env` (geralmente 3000) e permitir que você se conecte ao backend e ao banco de dados.
+
+### 8. Acessando o Projeto no Navegador
+Após rodar o servidor, você pode acessar o projeto no seu navegador localmente via:
+
+```bash
+http://localhost:3000
+```
+
+### 9. Testando a API
+Para testar a API de registro de usuário e login, você pode usar ferramentas como o **Postman** ou **Insomnia** para fazer requisições POST para `http://localhost:3000/register` e `http://localhost:3000/login`, respectivamente.
+
+Com esses comandos e configurações, seu backend estará pronto para interagir com o frontend.
+
+### Conclusão
+Este tutorial cobre a instalação das dependências essenciais e os passos para configurar seu ambiente de desenvolvimento. Certifique-se de adaptar os comandos conforme necessário para seu ambiente de produção.

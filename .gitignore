@@ -1,0 +1,27 @@
+# Node.js
+/node_modules/
+
+# Logs
+*.log
+
+# Dependências do PostgreSQL (se você estiver usando o pgAdmin ou outro banco local)
+*.db
+*.sql
+
+# Ambiente de Desenvolvimento (os arquivos .env geralmente contêm credenciais sensíveis)
+.env
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários do editor (ex: VS Code)
+.vscode/
+.idea/
+
+# Build (caso tenha)
+build/
+dist/
+
+# Arquivos de configuração do OS
+Desktop.ini

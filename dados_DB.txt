@@ -1,0 +1,28 @@
+Nome
+Cafeteria_DB
+
+Nome do host
+Um nome de host interno usado pelos seus serviços de renderização
+dpg-ct322pbv2p9s73b4ltp0-a
+
+Porta 
+5432
+
+Banco de dados
+cafeteria_db_t29y
+
+Nome de usuário
+cafeteria_db_t29y_user
+
+Senha
+mbRXE3b846RohcqqXbcJitQjsVIfRrfE
+
+URL do banco de dados interno
+postgresql://cafeteria_db_t29y_user:mbRXE3b846RohcqqXbcJitQjsVIfRrfE@dpg-ct322pbv2p9s73b4ltp0-a/cafeteria_db_t29y
+
+URL do banco de dados externo
+postgresql://cafeteria_db_t29y_user:mbRXE3b846RohcqqXbcJitQjsVIfRrfE@dpg-ct322pbv2p9s73b4ltp0-a.ohio-postgres.render.com/cafeteria_db_t29y
+
+Comando PSQL
+PGPASSWORD=mbRXE3b846RohcqqXbcJitQjsVIfRrfE psql -h dpg-ct322pbv2p9s73b4ltp0-a.ohio-postgres.render.com -U cafeteria_db_t29y_user cafeteria_db_t29y
+
