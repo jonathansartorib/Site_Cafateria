@@ -1,4 +1,7 @@
-async function registerUser() {
+async function registerUser(event) {
+
+    event.preventDefault(); // Impede o envio do formulário
+
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
@@ -18,12 +21,11 @@ async function registerUser() {
             },
             body: JSON.stringify({ name, email, password, dob }),
         });
-
-        // Verifique se a resposta tem o status 201 (criado) ou não
         if (response.ok) {
             alert('Usuário cadastrado com sucesso!');
+            window.location.href = "../index.html"
         } else {
-            // Tente obter a resposta como JSON caso tenha erro
+            
             const errorData = await response.json();
             alert(`Erro: ${errorData.message || 'Tente novamente mais tarde.'}`);
         }

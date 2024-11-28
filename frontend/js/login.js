@@ -1,4 +1,9 @@
+const loginSection = document.getElementById('login');
+const mainSection = document.getElementById('main');
+
+
 async function loginUser(event) {
+
     event.preventDefault(); // Impede o envio do formulário padrão
 
     const email = document.getElementById('email').value;
@@ -9,9 +14,7 @@ async function loginUser(event) {
         alert('Por favor, preencha todos os campos.');
         return;
     }
-
     try {
-        // Enviar a requisição para verificar as credenciais
         const response = await fetch('http://localhost:3000/login', {
             method: 'POST',
             headers: {
@@ -20,11 +23,13 @@ async function loginUser(event) {
             body: JSON.stringify({ email, password }),
         });
 
-        // Se a resposta for ok, login bem-sucedido
         if (response.ok) {
             alert('Login bem-sucedido!');
-            // Redirecionar para a página principal ou remover o overlay de login
-            window.location.href = "index.html";  // Ou mostrar o conteúdo principal da aplicação
+
+             // Esconde a seção de login e exibe a seção principal
+             loginSection.style.display = 'none';
+             mainSection.style.display = 'flex';
+            
         } else {
             const errorData = await response.json();
             alert(`Erro: ${errorData.message || 'Credenciais incorretas'}`);
@@ -35,5 +40,5 @@ async function loginUser(event) {
     }
 }
 
-// Associar a função de login ao botão de submit
-document.querySelector('form').addEventListener('submit', loginUser);
+
+

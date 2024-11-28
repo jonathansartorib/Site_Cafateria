@@ -1,5 +1,5 @@
 # Node.js
-/node_modules/
+/backend/node_modules/
 
 # Logs
 *.log
@@ -25,3 +25,5 @@ dist/
 
 # Arquivos de configuração do OS
 Desktop.ini
+
+dados_DB.txt
