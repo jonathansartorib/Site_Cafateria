@@ -58,8 +58,6 @@ app.listen(port, () => {
 });
 
 
-
-
 // Endpoint para login de usuário
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
