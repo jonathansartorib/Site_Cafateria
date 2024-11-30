@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const { Client } = require('pg');
 const dotenv = require('dotenv');
 const cors = require('cors');
@@ -27,9 +28,12 @@ client.connect((err) => {
   }
 });
 
-// Teste do backend
-app.get('/', (req, res) => {
-  res.send('Servidor funcionando!');
+// Servir arquivos estáticos do frontend
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+// Endpoint para servir o index.html por padrão
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/index.html'));
 });
 
 // Endpoint para cadastro de usuário
@@ -51,34 +55,32 @@ app.post('/register', async (req, res) => {
   }
 });
 
-
-// Iniciar servidor
-app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
-});
-
-
 // Endpoint para login de usuário
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-      return res.status(400).json({ message: 'E-mail e senha são obrigatórios.' });
+    return res.status(400).json({ message: 'E-mail e senha são obrigatórios.' });
   }
 
   try {
-      const query = 'SELECT * FROM users WHERE email = $1 AND password = $2';
-      const values = [email, password];
-      const result = await client.query(query, values);
+    const query = 'SELECT * FROM users WHERE email = $1 AND password = $2';
+    const values = [email, password];
+    const result = await client.query(query, values);
 
-      if (result.rows.length > 0) {
-          // Usuário encontrado e autenticado
-          res.status(200).send('Login bem-sucedido.');
-      } else {
-          res.status(401).json({ message: 'Credenciais incorretas.' });
-      }
+    if (result.rows.length > 0) {
+      // Usuário encontrado e autenticado
+      res.status(200).send('Login bem-sucedido.');
+    } else {
+      res.status(401).json({ message: 'Credenciais incorretas.' });
+    }
   } catch (err) {
-      console.error('Erro ao realizar login:', err.stack);
-      res.status(500).json({ message: 'Erro ao realizar login.' });
+    console.error('Erro ao realizar login:', err.stack);
+    res.status(500).json({ message: 'Erro ao realizar login.' });
   }
+});
+
+// Iniciar servidor
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}`);
 });
