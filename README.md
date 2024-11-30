@@ -1,6 +1,6 @@
 # Café Supremo Delivery - Projeto Integrador Transdisciplinar
 
-Este é um projeto de uma cafeteria online desenvolvido como parte do **Projeto Integrador Interdisciplinar** da faculdade. O projeto tem como objetivo demonstrar a integração de um sistema de cadastro e login de usuários, além de exibir informações de produtos (cafés) para o usuário autenticado.
+Este é um projeto de uma cafeteria online desenvolvido como parte do **Projeto Integrador Transdisciplinar** da faculdade. O projeto tem como objetivo demonstrar a integração de um sistema de cadastro e login de usuários, além de exibir informações de produtos (cafés) para o usuário autenticado.
 
 ## Descrição
 
