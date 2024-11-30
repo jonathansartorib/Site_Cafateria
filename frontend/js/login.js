@@ -15,7 +15,7 @@ async function loginUser(event) {
         return;
     }
     try {
-        const response = await fetch('http://localhost:3000/login', {
+        const response = await fetch('https://site-cafateria.onrender.com/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -26,10 +26,10 @@ async function loginUser(event) {
         if (response.ok) {
             alert('Login bem-sucedido!');
 
-             // Esconde a seção de login e exibe a seção principal
-             loginSection.style.display = 'none';
-             mainSection.style.display = 'flex';
-            
+            // Esconde a seção de login e exibe a seção principal
+            loginSection.style.display = 'none';
+            mainSection.style.display = 'flex';
+
         } else {
             const errorData = await response.json();
             alert(`Erro: ${errorData.message || 'Credenciais incorretas'}`);

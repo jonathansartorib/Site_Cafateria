@@ -14,7 +14,7 @@ async function registerUser(event) {
     }
 
     try {
-        const response = await fetch('http://localhost:3000/register', {
+        const response = await fetch('https://site-cafateria.onrender.com/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ async function registerUser(event) {
             alert('Usuário cadastrado com sucesso!');
             window.location.href = "../index.html"
         } else {
-            
+
             const errorData = await response.json();
             alert(`Erro: ${errorData.message || 'Tente novamente mais tarde.'}`);
         }
