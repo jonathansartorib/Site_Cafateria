@@ -29,7 +29,7 @@ A aplicação é composta por um frontend interativo e um backend que se comunic
   - Cors (para permitir requisições entre diferentes origens)
   
 - **Hospedagem**:
-  - **Frontend**: GitHub Pages
+  - **Frontend**: render.com
   - **Backend**: Render (para hospedar o servidor e banco de dados PostgreSQL)
   
 - **Banco de Dados**: PostgreSQL hospedado no **Render**
